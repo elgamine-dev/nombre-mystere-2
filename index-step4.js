@@ -8,7 +8,7 @@ var nbraleat;
 function main(){
 
 	function reset(){
-		vie = prompt("Choisissez le nombre de vie");
+		vie = parseInt(prompt("Choisissez le nombre de vie"));
 		$("span").text(vie);
 		var min = parseInt(prompt("Choisissez un nombre aléatoire minimal"));
 		var max = parseInt(prompt("Choisissez un nombre aléatoire maximal"));
@@ -16,27 +16,47 @@ function main(){
 
 	}
 
+	
+
+	function partieGagnee(message){
+
+		alert(message);
+		reset();
+	}
+
+	function partiePerdue(message){
+
+		alert(message);
+		vie--;
+		$("span").text(vie);
+	}
+
+
+
 
 	function clickValider(){
 
 		var taper = $("input").val();
 
-		if (taper == nbraleat){
-			alert("Gagné");
+		if (taper === nbraleat){
+			partieGagnee("Gagné");
+			
+		}
+
+		if(vie === 0){
+			alert("You loose!")
 			reset();
 		}
 
 		else if(taper > nbraleat){
-			alert("Perdu, votre nombre est trop grand");
-			vie-- ;
-			$("span").text(vie);
+			partiePerdue("Try again, votre nombre est trop grand");
+			
 
 		}
 
-		else  {
-			alert("Perdu, votre nombre est trop petit");
-			vie-- ;
-			$("span").text(vie);
+		else {
+			partiePerdue("Try again, votre nombre est trop petit");
+			
 
 		}	
 
@@ -53,3 +73,9 @@ function main(){
 
 }
 
+/*
+		Concernant la 'refactorisation' : 
+		- créer une fonction 'demarrerPartie'
+		- créer une fonction 'partieGagnee'
+		- créer une fonction 'partiePerdue'
+		*/
