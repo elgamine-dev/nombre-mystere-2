@@ -37,36 +37,23 @@ function main(){
 	function clickValider(){
 
 		var taper = $("input").val();
-
-		if (taper === nbraleat){
-			partieGagnee("Gagné");
-			
-		}
-
+		
 		if(vie === 0){
 			alert("You loose!")
 			reset();
 		}
 
-		else if(taper > nbraleat){
+		if (taper === nbraleat){
+			partieGagnee("Gagné");
+		} else if(taper > nbraleat) {
 			partiePerdue("Try again, votre nombre est trop grand");
-			
-
-		}
-
-		else {
+		} else {
 			partiePerdue("Try again, votre nombre est trop petit");
-			
-
 		}	
-
 	}
 
 	$("button").click(function(){
-
 		clickValider()
-
-
 	});
 
 	reset();
